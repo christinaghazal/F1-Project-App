@@ -1,0 +1,267 @@
+
+:root {
+  --main-color: #e10600;
+}
+html {
+  scroll-behavior: smooth;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  text-transform: capitalize;
+}
+
+#formula-block {
+  padding: 3rem 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+}
+/**====================================== */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--main-color);
+  color: white;
+  padding: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+/**====================================== */
+#hero {
+  height: 150vh;
+  background: url("../public/img/heroImg.avif")
+    rgba(0, 0, 0, 0.5) center center;
+  background-blend-mode: overlay;
+  background-size: cover;
+  padding-top: 77px;
+  display: grid;
+  place-content: center;
+}
+
+#hero .container {
+  text-align: center;
+}
+#hero .container h1 {
+  font-size: 3rem;
+}
+
+#hero .container h1,
+#hero .container p {
+  color: white;
+}
+
+#hero .container p {
+  font-weight: bold;
+}
+/**====================================== */
+.start-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.start-button:hover {
+  background-color: red;
+}
+
+.start-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px rgb(243, 245, 247);
+}
+
+
+/**====================================== */
+/* Select Box */
+.select_box {
+  margin-bottom: 2rem;
+}
+
+.select_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.select_container > div {
+  flex: 1;
+}
+
+.select_container > select {
+  width: 100%;
+  text-transform: capitalize;
+  padding: 8px 10px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 0.25rem;
+}
+
+.select_container > div > select.invalid {
+  border: 1px solid red;
+}
+
+.select_box .validation_error,
+.select_box .loading_element {
+  margin-top: 0.75rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.select_box .validation_error {
+  color: red;
+}
+
+#submit_btn {
+  width: 100%;
+  background-color: var(--main-color);
+  color: #fff;
+  border: 1px solid transparent;
+  outline: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  text-transform: capitalize;
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-top: 1.25rem;
+  cursor: pointer;
+}
+/**====================================== */
+.formula-content,
+.news_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+ 
+}
+
+.news_title {
+  margin: 3rem 0 1rem;
+  text-align: center;
+}
+
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px 4px 0 0;
+}
+
+.formula-content .card img,
+.formula-news .card img {
+  width: 100%;
+
+  display: block;
+  border-radius: inherit;
+  height: 250px;
+}
+
+.formula-content .card img {
+  object-fit: contain;
+}
+
+.formula-news .card img {
+  object-fit: cover;
+}
+
+.formula-news .card .show_more {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background-color: var(--main-color);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.card .card-body {
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 220px;
+}
+
+.card .card-body .title {
+  padding-bottom: 0.5rem;
+}
+
+.card .card-body .description {
+  color: #777;
+  line-height: 1.5;
+}
+
+.container > .http_error_msg {
+  text-align: center;
+  color: red;
+  margin-top: 2rem;
+}
+
+ul {
+  list-style: square inside;
+}
+
+h4 {
+  padding-bottom: 0.5rem;
+}
+
+
+
+
+
+
+/* Btn scroll */
+.scroll-button {
+  background-color: red;
+  border: 10px;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  position: fixed;
+  bottom: 20px;
+  right: -40px;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 2;
+}
+.scroll-button.active {
+  right: 20px;
+}
+
+/* footer */
+
+footer {
+  color: #fff;
+  text-align: center;
+  background: #111;
+  display: block;
+  position:relative;
+  width: 100%;
+  padding: 30px 0;
+}
+.icons .fa {
+  color: blue;
+  margin: 0 13px;
+  cursor: pointer;
+  padding: 18px 0;
+}
