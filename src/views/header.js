@@ -1,4 +1,4 @@
-//import { section } from "../constants";
+
 
 export function createHeader() {
   const header = document.createElement('header');
@@ -32,15 +32,7 @@ export function createHeader() {
   document.body.prepend(heroSection);
 }
 
-// export function startApp() {
-//   const startButton = document.createElement('a');
-//   startButton.innerText = 'Start App';
-//   startButton.className = 'start-button';
 
-//   // Add click event listener to the button
- 
-
-//    };
   
 
 

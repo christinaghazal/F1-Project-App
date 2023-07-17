@@ -1,4 +1,4 @@
-import { section, divContainer, selectForm, selectContainer, selectBox, seasons, defaultSeasonsOption, categories, defaultCatOption, categoriesOptions, messagesDiv, validationError, loadingElement, submitButton, httpErrorMsg, formulaContent, formulaNewsDiv, newsTitle, formulaNewsContainer } from "./constants.js";
+import { section, divContainer, selectForm, selectContainer, selectBox, seasons, categories, categoriesOptions, messagesDiv, validationError, loadingElement, submitButton, httpErrorMsg, formulaContent, formulaNewsDiv, newsTitle, formulaNewsContainer } from "./constants.js";
 import { scrollButtonFn } from "./views/welcomeView.js";
 import { displayFormulaOneNews, displayCardWithData } from "./pages/welcomePage.js";
 import { createHeader } from  "./views/header.js";
@@ -28,10 +28,6 @@ section.id = "formula-block";
 divContainer.className = "container";
 
 
-
-
-
-
 selectBox.className = "select_box";
 
 
@@ -40,28 +36,24 @@ selectForm.id = "select_form";
 
 selectContainer.className = "select_container";
 
-// seasons Select
+// Seasons & Categories Select 
 
 seasons.id = "seasons";
-
-// Default Seasons Option
-
-defaultSeasonsOption.textContent = "select season";
-defaultSeasonsOption.disabled = false;
-defaultSeasonsOption.selected = true;
-seasons.appendChild(defaultSeasonsOption);
-
-// categories Select
-
 categories.id = "categories";
 
-// Default Categories Option
+// Default Seasons & Categories Option
 
-defaultCatOption.textContent = "select category";
-defaultCatOption.disabled = false;
-defaultCatOption.selected = true;
-categories.appendChild(defaultCatOption);
 
+function createDefaultOption(textContent) {
+  const option = document.createElement("option");
+  option.textContent = textContent;
+  option.disabled = false;
+  option.selected = true;
+  return option;
+}
+
+seasons.appendChild(createDefaultOption("select season"));
+categories.appendChild(createDefaultOption("select category"));
 
 //!=====================================================================
 
@@ -82,14 +74,11 @@ selectContainer.appendChild(categories);
 
 messagesDiv.className = "messages";
 
-
 validationError.className = "validation_error";
-
 
 loadingElement.className = "loading_element";
 
-messagesDiv.appendChild(validationError);
-messagesDiv.appendChild(loadingElement);
+messagesDiv.append(validationError, loadingElement);
 //!==============================================================
 
 submitButton.type = "submit";
@@ -97,9 +86,9 @@ submitButton.id = "submit_btn";
 submitButton.textContent = "submit";
 
 //!==============================================================
-selectForm.appendChild(selectContainer);
-selectForm.appendChild(messagesDiv);
-selectForm.appendChild(submitButton);
+
+selectForm.append(selectContainer, messagesDiv, submitButton);
+
 
 selectBox.appendChild(selectForm);
 
@@ -117,23 +106,26 @@ newsTitle.className = "news_title";
 newsTitle.textContent = "formula one news";
 
 
-formulaNewsContainer.className = "news_container";
+formulaNewsContainer.classList.add("news_container");
 
-formulaNewsDiv.appendChild(newsTitle);
-formulaNewsDiv.appendChild(formulaNewsContainer);
+formulaNewsDiv.append(newsTitle, formulaNewsContainer);
 
 
-divContainer.appendChild(selectBox);
-divContainer.appendChild(httpErrorMsg);
-divContainer.appendChild(formulaContent);
-divContainer.appendChild(formulaNewsDiv);
+
+function appendChildren(container, ...elements) {
+  elements.forEach(element => {
+    container.appendChild(element);
+  });
+}
+
+appendChildren(divContainer, selectBox, httpErrorMsg, formulaContent, formulaNewsDiv);
 
 section.appendChild(divContainer);
 
-// Append Formula Block Section To The Body
+// prepend Formula Block Section To The Body
 document.body.prepend(section);
 
-//document.body.appendChild(createHeader);
+
 createHeader();
 
 //?=====================================================================
@@ -158,7 +150,6 @@ fetch(newsUrl)
   });
 
 // Display Formula One News
-//displayFormulaOneNews(newsData);
 
 //?=========================================================================
 //  Fetch Seasons Data
@@ -278,8 +269,6 @@ function displayFormulaData(formulaData) {
     displayCardWithData(category, item);
   }
 }
-
-
 
 // ?=================================================
 
